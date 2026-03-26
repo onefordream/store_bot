@@ -718,7 +718,10 @@
     </footer>
 
     <script>
-        const apiKey = "AIzaSyCbKfTm2ii3-X5gfzxpe1VkdL47eW5SfHA"; // 実行環境から自動付与
+        const apiKey = "AIzaSyCbKfTm2ii3-X5gfzxpe1VkdL47eW5SfHA"; // 実行環境から自動付与、またはご自身のAPIキーを設定
+        // APIキーが設定されている場合(外部公開時)は gemini-1.5-flash を使用し、空の場合はプレビュー用モデルを使用
+        const modelName = apiKey === "" ? "gemini-2.5-flash-preview-09-2025" : "gemini-1.5-flash";
+
         const personas = {
             gym: { 
                 name: "AIトレーナー", 
@@ -818,17 +821,23 @@
             const lid = addLoading();
 
             try {
-                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`, {
                     method: 'POST', headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ contents: chatHistory, systemInstruction: { parts: [{ text: personas[currentPersona].prompt }] } })
                 });
                 const data = await res.json();
                 document.getElementById(lid)?.remove();
-                if (data?.candidates?.[0]) {
+                
+                if (res.ok && data?.candidates?.[0]) {
                     const ans = data.candidates[0].content.parts[0].text;
                     appendMessage('model', ans); chatHistory.push({ role: "model", parts: [{ text: ans }] });
-                } else appendMessage('model', 'エラーが発生しました。');
+                } else {
+                    console.error("Gemini API Error:", data);
+                    const errMsg = data?.error?.message ? `\\n詳細: ${data.error.message}` : "";
+                    appendMessage('model', `エラーが発生しました。設定をご確認ください。${errMsg}`);
+                }
             } catch (err) {
+                console.error("Fetch Error:", err);
                 document.getElementById(lid)?.remove(); appendMessage('model', '通信エラーです。');
             }
         });
