@@ -322,7 +322,7 @@
             </div>
         </div>
         <svg class="absolute bottom-[-1px] left-0 w-full h-8 md:h-16 text-teal-light" viewBox="0 0 1440 120" fill="currentColor" preserveAspectRatio="none">
-            <path d="M0,32L120,48C240,64,480,96,720,96C960,96,1200,64,1320,48L1440,32L1440,120L1320,120C1200,120,960,120,720,120C480,120,240,120,120,120L0,120Z"></path>
+            <path d="M0,32L80,42.7C160,53,320,75,480,74.7C640,75,800,53,960,42.7C1120,32,1280,32,1360,32L1440,32L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z"></path>
         </svg>
     </section>
 
@@ -398,7 +398,7 @@
         </svg>
     </section>
 
-    <!-- チャットデモ環境 -->
+    <!-- チャットデモ環境 (Dify iframe 埋め込み) -->
     <section class="bg-teal-dark py-12 md:py-24 relative overflow-hidden z-0">
         <div class="absolute inset-0 bg-[length:24px_24px] bg-dot-pattern opacity-20"></div>
 
@@ -406,78 +406,22 @@
             <div class="text-center mb-6 md:mb-10">
                 <span class="inline-flex items-center gap-1 bg-yellow-400 text-teal-dark px-3 py-1 rounded-full text-[10px] md:text-xs font-black tracking-widest shadow-md mb-3 transform -rotate-2 border border-yellow-200">
                     <i data-lucide="sparkles" class="w-3 h-3"></i>
-                    Gemini API 搭載
+                    AIアシスタント デモ
                 </span>
                 <h2 class="text-xl md:text-3xl font-bold text-white leading-relaxed mb-1">
                     実際にAIスタッフと<br class="md:hidden">話してみませんか？
                 </h2>
-                <p class="text-teal-100 text-xs md:text-sm font-medium">業種を選んで、AIの質問に答えてみてください。<br class="hidden md:block">ヒアリングをもとに、あなたにぴったりの提案を自動生成します！</p>
+                <p class="text-teal-100 text-xs md:text-sm font-medium">会話のきっかけを選んで、AIの質問に答えてみてください。<br class="hidden md:block">ヒアリングをもとに、あなたにぴったりの提案を自動生成します！</p>
             </div>
 
-            <!-- チャットコンテナ：高さを固定しはみ出しを完全に防ぐ -->
-            <div class="bg-white rounded-2xl md:rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row w-full max-w-full mx-auto border-2 md:border-4 border-white/20" style="height: 500px;">
-                
-                <!-- Sidebar (性格選択) -->
-                <div class="bg-gray-50 md:w-[30%] p-2 md:p-5 border-b md:border-b-0 md:border-r border-gray-200 flex-shrink-0 flex flex-col justify-center h-auto md:h-full">
-                    <h3 class="hidden md:flex font-bold text-gray-700 mb-4 text-sm items-center gap-1.5">
-                        <i data-lucide="settings-2" class="w-3.5 h-3.5 text-teal-main"></i> 性格を選ぶ
-                    </h3>
-                    <div class="flex flex-row md:flex-col gap-1.5 md:gap-3 w-full justify-between" id="persona-selector">
-                        <label class="flex-1 md:w-full flex flex-col md:flex-row items-center justify-center md:justify-start p-1.5 md:p-3 bg-white border-2 border-teal-main rounded-xl cursor-pointer hover:bg-teal-50 transition shadow-sm text-center md:text-left">
-                            <input type="radio" name="persona" value="gym" checked class="hidden">
-                            <div class="w-6 h-6 md:w-8 md:h-8 rounded-full bg-teal-light text-teal-main flex items-center justify-center md:mr-2 mb-0.5 md:mb-0 flex-shrink-0">
-                                <i data-lucide="dumbbell" class="w-3 h-3 md:w-4 md:h-4"></i>
-                            </div>
-                            <span class="font-bold text-gray-800 text-[10px] md:text-sm leading-tight truncate">ジム店員</span>
-                        </label>
-                        <label class="flex-1 md:w-full flex flex-col md:flex-row items-center justify-center md:justify-start p-1.5 md:p-3 bg-white border-2 border-transparent rounded-xl cursor-pointer hover:bg-teal-50 transition shadow-sm text-center md:text-left">
-                            <input type="radio" name="persona" value="apparel" class="hidden">
-                            <div class="w-6 h-6 md:w-8 md:h-8 rounded-full bg-gray-100 text-gray-400 flex items-center justify-center md:mr-2 mb-0.5 md:mb-0 flex-shrink-0 icon-container">
-                                <i data-lucide="shirt" class="w-3 h-3 md:w-4 md:h-4"></i>
-                            </div>
-                            <span class="font-bold text-gray-800 text-[10px] md:text-sm leading-tight truncate">アパレル</span>
-                        </label>
-                        <label class="flex-1 md:w-full flex flex-col md:flex-row items-center justify-center md:justify-start p-1.5 md:p-3 bg-white border-2 border-transparent rounded-xl cursor-pointer hover:bg-teal-50 transition shadow-sm text-center md:text-left">
-                            <input type="radio" name="persona" value="cafe" class="hidden">
-                            <div class="w-6 h-6 md:w-8 md:h-8 rounded-full bg-gray-100 text-gray-400 flex items-center justify-center md:mr-2 mb-0.5 md:mb-0 flex-shrink-0 icon-container">
-                                <i data-lucide="coffee" class="w-3 h-3 md:w-4 md:h-4"></i>
-                            </div>
-                            <span class="font-bold text-gray-800 text-[10px] md:text-sm leading-tight truncate">カフェ</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Chat Area -->
-                <div class="flex-1 flex flex-col bg-[#f8fcfb] h-full overflow-hidden">
-                    <div class="bg-white p-2 md:p-4 border-b flex items-center shadow-sm z-10 flex-shrink-0 h-[50px] md:h-[68px]">
-                        <div class="w-8 h-8 md:w-10 md:h-10 bg-teal-100 rounded-full flex items-center justify-center text-teal-main mr-2 md:mr-3 relative border border-teal-200 flex-shrink-0">
-                            <i data-lucide="bot" class="w-4 h-4 md:w-5 md:h-5"></i>
-                            <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 border-2 border-white rounded-full"></span>
-                        </div>
-                        <div class="flex-1 min-w-0 flex flex-col justify-center">
-                            <div class="font-black text-gray-800 text-[11px] md:text-sm truncate leading-tight" id="chat-header-name">AIトレーナー</div>
-                            <div class="text-[8px] md:text-[10px] font-bold text-teal-main bg-teal-50 px-1.5 py-0.5 rounded-full inline-block mt-0.5 w-max">オンライン</div>
-                        </div>
-                        <button id="reset-chat-btn" title="会話をリセット" class="p-1.5 md:p-2 text-gray-400 hover:text-teal-main bg-gray-50 hover:bg-teal-50 rounded-full transition flex-shrink-0 ml-1.5 flex items-center gap-1">
-                            <i data-lucide="rotate-ccw" class="w-3.5 h-3.5 md:w-4 md:h-4"></i>
-                            <span class="text-[9px] md:text-xs font-bold hidden md:inline">リセット</span>
-                        </button>
-                    </div>
-
-                    <!-- メッセージ表示エリア (ここだけスクロール) -->
-                    <div id="chat-messages" class="flex-1 p-3 md:p-5 overflow-y-auto flex flex-col gap-3 md:gap-4 text-xs md:text-sm relative h-0 scroll-smooth">
-                        <!-- Messages injected by JS -->
-                    </div>
-
-                    <div class="p-2 md:p-4 bg-white border-t flex-shrink-0">
-                        <form id="chat-form" class="flex gap-2 relative items-center">
-                            <input type="text" id="chat-input" placeholder="メッセージを入力..." class="flex-1 bg-gray-50 border border-gray-200 focus:bg-white focus:border-teal-main focus:ring-2 focus:ring-teal-main/20 rounded-full py-2 px-3 md:py-2.5 md:px-4 outline-none transition font-medium text-gray-700 text-xs md:text-sm min-w-0 h-[40px] md:h-[48px]" required autocomplete="off">
-                            <button type="submit" class="bg-teal-main text-white rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center shadow-md transform active:scale-95 transition-all flex-shrink-0">
-                                <i data-lucide="send" class="w-4 h-4 md:w-5 md:h-5 ml-0.5"></i>
-                            </button>
-                        </form>
-                    </div>
-                </div>
+            <!-- チャットコンテナ：Dify iframe -->
+            <div class="bg-white rounded-2xl md:rounded-3xl shadow-2xl overflow-hidden w-full max-w-full mx-auto border-2 md:border-4 border-white/20 h-[600px] md:h-[700px]">
+                <iframe
+                 src="https://udify.app/chatbot/XfkPE3Z31QysikDd"
+                 style="width: 100%; height: 100%; min-height: 100%;"
+                 frameborder="0"
+                 allow="microphone">
+                </iframe>
             </div>
         </div>
         
@@ -728,131 +672,7 @@
 
     <!-- スクリプト群 -->
     <script>
-        const apiKey = "AIzaSyCbKfTm2ii3-X5gfzxpe1VkdL47eW5SfHA"; // 実行環境から自動付与、またはご自身のAPIキーを設定
-        // APIキーが設定されている場合は安定版のモデルを使用し、設定されていない場合はプレビュー用を使用
-        const modelName = apiKey === "" ? "gemini-2.5-flash-preview-09-2025" : "gemini-2.5-flash";
-
-        const personas = {
-            gym: { 
-                name: "AIトレーナー", 
-                prompt: `あなたは無人ジムの優秀なAIパーソナルトレーナーです。明るく元気なトーンで、絵文字を交えて会話してください。
-以下のステップでヒアリングと提案を行ってください。
-1. まず、トレーニングの目的（ダイエット、筋力UP、健康維持など）と、重点的に鍛えたい部位を聞いてください。
-2. お客様から回答があれば、次に「ジムに通える頻度（週何回くらいか）」を聞いてください。
-3. すべての情報が揃ったら、その人に最適な「おすすめのトレーニングメニュー（3〜4種目）」と「ワンポイントアドバイス」を生成してわかりやすく提案してください。
-※一度に複数の質問をせず、対話のキャッチボールをしてください。1回の返答は短く読みやすくしてください。`, 
-                greeting: "こんにちは！💪 STORE GYMのAIトレーナーです！\nまずは、お客様のトレーニングの目的（ダイエット、筋力UPなど）や、気になっている部位を教えていただけますか？✨" 
-            },
-            apparel: { 
-                name: "AIスタイリスト", 
-                prompt: `あなたはアパレルショップのセンス抜群なAI専属スタイリストです。フレンドリーで親しみやすい言葉遣いで、絵文字を使って会話してください。
-以下のステップでヒアリングと提案を行ってください。
-1. まず、服を着ていくシーン（デート、オフィス、普段着など）や、好きな色・テイストを聞いてください。
-2. お客様から回答があれば、次に「体型のお悩み」や「取り入れたいアイテム」がないか聞いてください。
-3. すべての情報が揃ったら、その人に似合う「全身のコーディネート提案」と「着こなしのコツ」を生成して提案してください。
-※一度に複数の質問をせず、対話のキャッチボールをしてください。1回の返答は短く読みやすくしてください。`, 
-                greeting: "いらっしゃいませ👗✨ AIスタイリストです！\n今日はお洋服をお探しですか？まずは、着ていくシーン（デートやお仕事など）や、お好きなテイストを教えてください！" 
-            },
-            cafe: { 
-                name: "カフェスタッフ", 
-                prompt: `あなたはカフェの癒し系AIスタッフです。丁寧で優しく、リラックスできるトーンで会話してください。絵文字も少し使ってください。
-以下のステップでヒアリングと提案を行ってください。
-1. まず、今の気分（リフレッシュしたい、ホッとしたい等）と、お腹の空き具合を聞いてください。
-2. お客様から回答があれば、好みの味（甘いもの、ビターなもの、サッパリ系など）を聞いてください。
-3. すべての情報が揃ったら、当店の架空のメニューから、お客様にぴったりの「ドリンクとフードの組み合わせ」を生成して提案してください。
-※一度に複数の質問をせず、対話のキャッチボールをしてください。1回の返答は短く読みやすくしてください。`, 
-                greeting: "いらっしゃいませ☕️ AIカフェスタッフです。\n今の気分は「リフレッシュ」と「ホッと一息」、どちらに近いですか？お腹の空き具合も合わせて教えてくださいね🌿" 
-            }
-        };
-
-        let currentPersona = 'gym';
-        let chatHistory = [];
-        const messagesContainer = document.getElementById('chat-messages');
-        const chatForm = document.getElementById('chat-form');
-        const chatInput = document.getElementById('chat-input');
-        const personaRadios = document.querySelectorAll('input[name="persona"]');
-        const headerName = document.getElementById('chat-header-name');
-
-        function appendMessage(role, text) {
-            const msgDiv = document.createElement('div');
-            msgDiv.className = role === 'user' 
-                ? "max-w-[85%] rounded-[1.2rem] px-3.5 py-2.5 bg-teal-main text-white self-end rounded-tr-sm shadow-sm font-bold break-words"
-                : "max-w-[85%] rounded-[1.2rem] px-3.5 py-2.5 bg-white border border-gray-100 text-gray-700 self-start rounded-tl-sm shadow-sm font-bold break-words";
-            msgDiv.innerHTML = text.replace(/\n/g, '<br>');
-            messagesContainer.appendChild(msgDiv);
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-        }
-
-        function addLoading() {
-            const id = 'loading-' + Date.now();
-            const div = document.createElement('div');
-            div.id = id;
-            div.className = "max-w-[80%] rounded-[1.2rem] px-4 py-3 bg-white border border-gray-100 self-start rounded-tl-sm shadow-sm flex items-center gap-1";
-            div.innerHTML = `<div class="w-1.5 h-1.5 bg-teal-main/60 rounded-full animate-bounce"></div><div class="w-1.5 h-1.5 bg-teal-main/60 rounded-full animate-bounce" style="animation-delay:0.2s"></div><div class="w-1.5 h-1.5 bg-teal-main/60 rounded-full animate-bounce" style="animation-delay:0.4s"></div>`;
-            messagesContainer.appendChild(div);
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-            return id;
-        }
-
-        function initChat() {
-            chatHistory = []; messagesContainer.innerHTML = '';
-            const g = personas[currentPersona].greeting;
-            appendMessage('model', g);
-            chatHistory.push({ role: "model", parts: [{ text: g }] });
-            headerName.textContent = personas[currentPersona].name;
-        }
-
-        personaRadios.forEach(radio => {
-            radio.addEventListener('change', (e) => {
-                currentPersona = e.target.value;
-                document.querySelectorAll('#persona-selector label').forEach(l => {
-                    l.classList.remove('border-teal-main'); l.classList.add('border-transparent');
-                    l.querySelector('div').classList.replace('bg-teal-light', 'bg-gray-100');
-                    l.querySelector('div').classList.replace('text-teal-main', 'text-gray-400');
-                });
-                const active = e.target.closest('label');
-                active.classList.replace('border-transparent', 'border-teal-main');
-                active.querySelector('div').classList.replace('bg-gray-100', 'bg-teal-light');
-                active.querySelector('div').classList.replace('text-gray-400', 'text-teal-main');
-                initChat();
-            });
-        });
-
-        document.getElementById('reset-chat-btn').addEventListener('click', initChat);
-
-        chatForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const txt = chatInput.value.trim(); if (!txt) return;
-            appendMessage('user', txt); chatHistory.push({ role: "user", parts: [{ text: txt }] });
-            chatInput.value = '';
-            
-            chatInput.blur(); 
-            
-            const lid = addLoading();
-
-            try {
-                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`, {
-                    method: 'POST', headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ contents: chatHistory, systemInstruction: { parts: [{ text: personas[currentPersona].prompt }] } })
-                });
-                const data = await res.json();
-                document.getElementById(lid)?.remove();
-                
-                if (res.ok && data?.candidates?.[0]) {
-                    const ans = data.candidates[0].content.parts[0].text;
-                    appendMessage('model', ans); chatHistory.push({ role: "model", parts: [{ text: ans }] });
-                } else {
-                    console.error("Gemini API Error:", data);
-                    const errMsg = data?.error?.message ? `\\n詳細: ${data.error.message}` : "";
-                    appendMessage('model', `エラーが発生しました。設定やAPIキーをご確認ください。${errMsg}`);
-                }
-            } catch (err) {
-                console.error("Fetch Error:", err);
-                document.getElementById(lid)?.remove(); appendMessage('model', '通信エラーです。');
-            }
-        });
-
-        window.addEventListener('DOMContentLoaded', () => { initChat(); lucide.createIcons(); });
+        window.addEventListener('DOMContentLoaded', () => { lucide.createIcons(); });
     </script>
 </body>
 </html>
